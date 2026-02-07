@@ -15,88 +15,121 @@
         .tab-content.active { display: block; }
         @media print { .no-print { display: none !important; } .print-only { display: block !important; } }
         .print-only { display: none; }
-        
-        /* Logo Styles */
-        .company-logo { height: 45px; width: auto; }
-        .hero-logo { height: 120px; width: auto; margin-bottom: 20px; }
-        .receipt-logo { height: 80px; width: auto; margin-bottom: 10px; }
     </style>
 </head>
 <body class="bg-white text-slate-900">
 
-    <nav class="no-print flex items-center justify-between px-8 py-4 sticky top-0 bg-white/80 backdrop-blur-md z-50 border-b border-slate-50">
-        <div class="flex items-center gap-4">
-            <img src="logo.png" alt="Supreme Blue Logo" class="company-logo" onerror="this.outerHTML='<div class=\'w-10 h-10 bg-[#004aad] rounded-xl flex items-center justify-center text-white font-black text-xl\'>S</div>'">
-            <div class="border-l pl-4 border-slate-200">
-                <h1 class="text-lg font-black text-[#004aad] tracking-tighter leading-none uppercase">Supreme Blue</h1>
-                <p class="text-[8px] font-bold text-slate-400 mt-1 uppercase">CFA/BW/296/2019/06</p>
+    <nav class="no-print flex items-center justify-between px-8 py-6 sticky top-0 bg-white/80 backdrop-blur-md z-50 border-b border-slate-50">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-[#004aad] rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg shadow-blue-200">S</div>
+            <div>
+                <h1 class="text-xl font-black text-[#004aad] tracking-tighter leading-none">SUPREME BLUE</h1>
+                <p class="text-[9px] font-bold text-slate-400 mt-1 uppercase">CFA/BW/296/2019/06</p>
             </div>
         </div>
         
-        <div class="hidden lg:flex gap-8">
-            <button onclick="showTab('pos-tab')" class="nav-link">Shop</button>
-            <button onclick="showTab('admin-tab')" class="nav-link">Reports</button>
-            <a href="#" class="nav-link">About</a>
+        <div class="hidden lg:flex gap-10">
+            <button onclick="showTab('pos-tab')" class="nav-link">Products</button>
+            <button onclick="showTab('admin-tab')" class="nav-link">Sales History</button>
+            <a href="#" class="nav-link">Exports</a>
+            <a href="#" class="nav-link">Payments</a>
+            <a href="#" class="nav-link">Contact</a>
         </div>
 
-        <button onclick="showTab('pos-tab')" class="bg-[#004aad] text-white px-6 py-2.5 rounded-xl font-bold text-xs uppercase shadow-lg shadow-blue-100">POS System</button>
+        <button onclick="showTab('pos-tab')" class="bg-[#2563eb] text-white px-8 py-3 rounded-xl font-black text-xs uppercase shadow-xl shadow-blue-200 hover:scale-105 transition-transform">PAY NOW</button>
     </nav>
 
-    <header class="no-print hero-bg pt-24 pb-32 px-6 text-center">
-        <div class="max-w-5xl mx-auto flex flex-col items-center">
-            <img src="logo.png" alt="Main Logo" class="hero-logo" onerror="this.style.display='none'">
-            
-            <p class="text-blue-500 font-black text-xs uppercase tracking-[0.5em] mb-4">Vihara Natural Products</p>
-            <h2 class="text-7xl md:text-8xl font-black text-slate-900 mb-4 leading-none uppercase italic">
-                Live <span class="text-blue-600">More</span>
+    <header class="no-print hero-bg pt-20 pb-40 px-6 text-center">
+        <div class="max-w-5xl mx-auto">
+            <p class="text-blue-500 font-black text-xs uppercase tracking-[0.4em] mb-4">Vihara Natural Products</p>
+            <h2 class="text-7xl md:text-9xl font-black text-slate-900 mb-6 leading-none">
+                <span class="bg-blue-50 px-4">LIVE</span> MORE
             </h2>
-            <h3 class="text-2xl md:text-3xl font-medium text-slate-400 italic">with Healthy Hydration</h3>
+            <h3 class="text-3xl md:text-4xl font-medium text-slate-500 italic">with Healthy Hydration</h3>
+            
+            <div class="mt-16 inline-flex flex-wrap justify-center gap-8 bg-white p-6 rounded-[2rem] shadow-2xl border border-slate-50 text-left">
+                <div class="pr-8 border-r border-slate-100">
+                    <p class="text-[9px] font-black text-slate-300 uppercase mb-1">Director</p>
+                    <p class="font-bold text-slate-800">Jayantha Edirisinghe</p>
+                </div>
+                <div class="pr-8 border-r border-slate-100">
+                    <p class="text-[9px] font-black text-slate-300 uppercase mb-1">Contact</p>
+                    <p class="font-bold text-slate-800">071-4491618</p>
+                </div>
+                <div>
+                    <p class="text-[9px] font-black text-slate-300 uppercase mb-1">Location</p>
+                    <p class="font-bold text-slate-800 italic">Karandana, Sri Lanka</p>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main class="container mx-auto p-4 max-w-6xl -mt-16">
+    <main class="container mx-auto p-4 max-w-6xl -mt-24">
         <div id="pos-tab" class="tab-content active no-print">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
                 <div class="lg:col-span-7">
-                    <div id="pGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                        <button onclick="addToCart('500ml Bottle', 50)" class="bg-white p-6 rounded-[2rem] shadow-sm hover:shadow-xl border border-slate-100 text-center transition-all">
-                            <span class="text-3xl block mb-2 text-blue-500">💧</span>
-                            <p class="font-bold text-slate-800 text-xs uppercase">500ml Bottle</p>
-                            <p class="text-[#004aad] font-black mt-1">50.00</p>
+                    <div class="bg-white p-5 rounded-[2rem] shadow-xl flex items-center gap-4 mb-8">
+                        <span class="text-xl">🔍</span>
+                        <input type="text" id="pSearch" onkeyup="filterItems()" placeholder="Search sizes or dispensers..." class="w-full bg-transparent outline-none font-bold text-slate-600">
+                    </div>
+
+                    <div id="pGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-5">
+                        <button onclick="addToCart('500ml Bottle', 50)" class="p-item bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl border-2 border-transparent hover:border-blue-400 transition-all text-center group" data-name="500ml">
+                            <span class="text-4xl block mb-4 transform group-hover:scale-110 transition-transform">💧</span>
+                            <p class="font-black text-slate-800 text-sm mb-1 uppercase">500ml Bottle</p>
+                            <p class="text-blue-600 font-black text-lg">50.00</p>
                         </button>
-                        <button onclick="addToCart('1000ml Bottle', 90)" class="bg-white p-6 rounded-[2rem] shadow-sm hover:shadow-xl border border-slate-100 text-center transition-all">
-                            <span class="text-3xl block mb-2 text-blue-500">🍶</span>
-                            <p class="font-bold text-slate-800 text-xs uppercase">1000ml Bottle</p>
-                            <p class="text-[#004aad] font-black mt-1">90.00</p>
+                        <button onclick="addToCart('1000ml Bottle', 90)" class="p-item bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl border-2 border-transparent hover:border-blue-400 transition-all text-center group" data-name="1000ml">
+                            <span class="text-4xl block mb-4 transform group-hover:scale-110 transition-transform">🍶</span>
+                            <p class="font-black text-slate-800 text-sm mb-1 uppercase">1000ml Bottle</p>
+                            <p class="text-blue-600 font-black text-lg">90.00</p>
                         </button>
-                        <button onclick="addToCart('1500ml Bottle', 120)" class="bg-white p-6 rounded-[2rem] shadow-sm hover:shadow-xl border border-slate-100 text-center transition-all">
-                            <span class="text-3xl block mb-2 text-blue-500">🥤</span>
-                            <p class="font-bold text-slate-800 text-xs uppercase">1500ml Bottle</p>
-                            <p class="text-[#004aad] font-black mt-1">120.00</p>
+                        <button onclick="addToCart('1500ml Bottle', 120)" class="p-item bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl border-2 border-transparent hover:border-blue-400 transition-all text-center group" data-name="1500ml">
+                            <span class="text-4xl block mb-4 transform group-hover:scale-110 transition-transform">🥤</span>
+                            <p class="font-black text-slate-800 text-sm mb-1 uppercase">1500ml Bottle</p>
+                            <p class="text-blue-600 font-black text-lg">120.00</p>
                         </button>
-                        <button onclick="addManualPrice('19L Large')" class="bg-blue-50/50 p-6 rounded-[2rem] border border-blue-100 text-center transition-all">
-                            <span class="text-3xl block mb-2 text-blue-400">🛢️</span>
-                            <p class="font-bold text-blue-900 text-xs uppercase">19L Large</p>
-                            <p class="text-blue-500 text-[10px] font-black mt-1 uppercase">Set Price</p>
+                        <button onclick="addManualPrice('19L Bottle')" class="p-item bg-blue-50/50 p-8 rounded-[2.5rem] shadow-sm border-2 border-blue-100 hover:border-blue-500 transition-all text-center group" data-name="19L Large">
+                            <span class="text-4xl block mb-4 transform group-hover:scale-110 transition-transform">🛢️</span>
+                            <p class="font-black text-blue-900 text-sm mb-1 uppercase">19L Large Bottle</p>
+                            <p class="text-blue-400 text-[10px] font-black tracking-widest uppercase">Custom Price</p>
+                        </button>
+                        <button onclick="addManualPrice('Dispenser')" class="p-item bg-blue-50/50 p-8 rounded-[2.5rem] shadow-sm border-2 border-blue-100 hover:border-blue-500 transition-all text-center group" data-name="Dispenser Unit">
+                            <span class="text-4xl block mb-4 transform group-hover:scale-110 transition-transform">🏗️</span>
+                            <p class="font-black text-blue-900 text-sm mb-1 uppercase">Water Dispenser</p>
+                            <p class="text-blue-400 text-[10px] font-black tracking-widest uppercase">Custom Price</p>
                         </button>
                     </div>
                 </div>
 
                 <div class="lg:col-span-5">
-                    <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-50">
-                        <div class="p-6 bg-[#0f172a] text-white flex justify-between items-center">
-                            <h2 class="font-black text-sm uppercase tracking-widest">Cart Summary</h2>
-                            <span id="live-time" class="text-[9px] font-bold opacity-50 uppercase"></span>
-                        </div>
-                        <div id="cItems" class="p-6 space-y-3 min-h-[250px]">
-                            <p class="text-center text-slate-300 py-10 italic">Your cart is empty</p>
-                        </div>
-                        <div class="p-6 border-t border-slate-100 bg-slate-50/50">
-                            <div class="flex justify-between items-end mb-6">
-                                <p class="text-slate-400 font-bold text-[10px] uppercase">Amount Due (LKR)</p>
-                                <p id="tAmount" class="text-4xl font-black text-[#004aad]">0.00</p>
+                    <div class="bg-white rounded-[3rem] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col h-full sticky top-28 border border-slate-50">
+                        <div class="p-8 bg-[#0f172a] text-white flex justify-between items-center">
+                            <div>
+                                <h2 class="font-black text-lg uppercase tracking-tighter">Current Bill</h2>
+                                <p id="live-clock" class="text-[10px] text-slate-400 font-bold"></p>
                             </div>
-                            <button onclick="processSale()" class="w-full py-4 bg-[#004aad] text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl hover:bg-blue-800 transition-all">Print Receipt</button>
+                            <span id="iCount" class="bg-blue-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest">0 Items</span>
+                        </div>
+                        
+                        <div id="cItems" class="p-8 flex-1 space-y-4 min-h-[300px] overflow-y-auto bg-slate-50/30">
+                            <p class="text-slate-300 text-center py-20 italic font-medium">Add products to see the summary</p>
+                        </div>
+
+                        <div class="p-8 space-y-6 bg-white border-t border-slate-100">
+                            <div class="flex items-center gap-4 bg-blue-50/50 p-4 rounded-2xl border border-blue-100 cursor-pointer transition-colors hover:bg-blue-50">
+                                <input type="checkbox" id="dCheck" onchange="updateUI()" class="w-6 h-6 accent-blue-600 rounded-md">
+                                <label for="dCheck" class="font-bold text-sm text-slate-700 cursor-pointer">Require Home Delivery</label>
+                            </div>
+                            <div class="flex justify-between items-end border-b border-dashed border-slate-200 pb-4">
+                                <p class="text-slate-400 font-black text-[10px] uppercase tracking-widest">Grand Total (LKR)</p>
+                                <p id="tAmount" class="text-5xl font-black text-[#004aad]">0.00</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <button onclick="clearCart()" class="py-4 bg-slate-100 text-slate-500 rounded-2xl font-black text-xs uppercase hover:bg-slate-200 transition-colors">Clear</button>
+                                <button onclick="processSale()" class="py-4 bg-[#004aad] text-white rounded-2xl font-black text-xs uppercase shadow-xl shadow-blue-200 hover:bg-blue-800 transition-colors">Confirm & Print</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,104 +137,177 @@
         </div>
 
         <div id="admin-tab" class="tab-content no-print py-10">
-            <div class="bg-white p-8 rounded-[2rem] shadow-lg">
-                <h2 class="text-xl font-black text-slate-800 uppercase mb-6 italic border-b pb-4">Sales Records</h2>
-                <div id="salesLog" class="space-y-3"></div>
+            <div class="bg-white p-10 rounded-[3rem] shadow-2xl border border-slate-50">
+                <div class="flex justify-between items-center mb-10 border-b pb-6">
+                    <div>
+                        <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter italic">Sales Record</h2>
+                        <p class="text-xs text-slate-400 font-bold">Vihara Natural Products Back-end</p>
+                    </div>
+                    <button onclick="clearHistory()" class="bg-red-50 text-red-500 px-6 py-2 rounded-xl font-black text-[10px] uppercase hover:bg-red-500 hover:text-white transition-all">Reset All Logs</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="text-slate-300 text-[10px] uppercase font-black tracking-[0.2em]">
+                            <tr>
+                                <th class="pb-6">Date & Time</th>
+                                <th class="pb-6">Products Sold</th>
+                                <th class="pb-6">Delivery</th>
+                                <th class="pb-6 text-right">Revenue (LKR)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salesLogBody" class="text-sm font-bold text-slate-600"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </main>
 
-    <div class="print-only p-12 font-mono text-[12px]">
+    <div class="print-only p-12 font-mono text-[13px] leading-relaxed">
         <center>
-            <img src="logo.png" alt="Supreme Blue Logo" class="receipt-logo" onerror="this.style.display='none'">
-            <h1 class="text-3xl font-black">SUPREME BLUE</h1>
-            <p class="uppercase font-bold">Bottled Drinking Water</p>
-            
-            <div class="my-6 border-y border-black py-4 text-[13px]">
-                <p class="font-black">VIHARA NATURAL PRODUCTS</p>
+            <h1 class="text-4xl font-black text-blue-800">SUPREME BLUE</h1>
+            <p class="font-black text-base uppercase tracking-widest">Bottled Drinking Water</p>
+            <div class="my-6 border-y-2 py-4 border-black">
+                <p class="font-black text-lg">VIHARA NATURAL PRODUCTS</p>
                 <p>Viharahena Estate, Dammulla, Karandana.</p>
-                <p class="font-bold mt-1">Reg: CFA/BW/296/2019/06</p>
-                <p>Director: Jayantha Edirisinghe</p>
-                <p>Tel: 071-4491618 / 076-0921909</p>
+                <p class="font-bold">Reg No: CFA/BW/296/2019/06</p>
+                <p class="mt-2">Director: Jayantha Edirisinghe</p>
             </div>
+            <p class="font-bold">Tel: 071-4491618 / 076-0921909</p>
+            <p>Email: jayanthatea@hotmail.com</p>
+            <div class="border-b-2 border-black border-dashed my-8"></div>
         </center>
         
-        <div id="rItems" class="space-y-2 mb-8"></div>
+        <div id="rItems" class="space-y-3 mb-10 text-base"></div>
         
-        <div class="border-t border-black pt-4">
-            <div class="flex justify-between text-2xl font-black">
+        <div class="border-t-2 border-black pt-6 space-y-4">
+            <div class="flex justify-between text-3xl font-black">
                 <span>TOTAL:</span>
                 <span id="rTotal"></span>
             </div>
+            <p id="rDNote" class="hidden font-black text-center border-4 border-black p-3 mt-4 text-lg">
+                *** DELIVERY ORDER ***
+            </p>
         </div>
 
-        <center class="mt-16">
-            <p class="font-bold italic">"Live More with Healthy Hydration"</p>
-            <p class="mt-4 opacity-50 italic">Date: <span id="rDate"></span></p>
+        <center class="mt-24">
+            <p class="font-black text-xl italic uppercase">"Live More with Healthy Hydration"</p>
+            <p class="mt-8 opacity-40 italic text-[10px]">Date Issued: <span id="rDate"></span></p>
         </center>
     </div>
 
     <script>
         let cart = [];
-        let sales = JSON.parse(localStorage.getItem('supreme_sales_v3')) || [];
+        let salesHistory = JSON.parse(localStorage.getItem('supreme_sales_v2')) || [];
 
         function showTab(id) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            if(id === 'admin-tab') renderSales();
+            if(id === 'admin-tab') renderSalesLog();
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
         function addToCart(name, price) {
             const item = cart.find(i => i.name === name);
-            if (item) item.qty++; else cart.push({ name, price: parseFloat(price), qty: 1 });
+            if (item) item.qty++;
+            else cart.push({ name, price: parseFloat(price), qty: 1 });
             updateUI();
         }
 
         function addManualPrice(name) {
-            let p = prompt(`Price for ${name}:`, "0");
+            let p = prompt(`Set Custom Price for ${name}:`, "0");
             if (p > 0) addToCart(name, p);
+        }
+
+        function updateQty(idx, delta) {
+            cart[idx].qty += delta;
+            if (cart[idx].qty <= 0) cart.splice(idx, 1);
+            updateUI();
+        }
+
+        function filterItems() {
+            let q = document.getElementById('pSearch').value.toLowerCase();
+            document.querySelectorAll('.p-item').forEach(el => {
+                el.style.display = el.getAttribute('data-name').toLowerCase().includes(q) ? 'block' : 'none';
+            });
+        }
+
+        function clearCart() {
+            if(confirm("Clear order?")) { cart = []; document.getElementById('dCheck').checked = false; updateUI(); }
         }
 
         function updateUI() {
             const list = document.getElementById('cItems');
-            let total = 0, html = '', rHtml = '';
+            const isD = document.getElementById('dCheck').checked;
             
+            if (cart.length === 0) {
+                list.innerHTML = `<p class="text-slate-300 text-center py-20 italic font-medium">Add products to see the summary</p>`;
+                document.getElementById('tAmount').innerText = "0.00";
+                document.getElementById('iCount').innerText = "0 Items";
+                return;
+            }
+
+            let total = 0, html = '', rHtml = '', qTotal = 0;
             cart.forEach((item, i) => {
                 const sub = item.price * item.qty;
-                total += sub;
-                html += `<div class="flex justify-between items-center bg-slate-50 p-4 rounded-xl">
-                    <span class="font-black text-[10px] uppercase text-slate-700">${item.name} x${item.qty}</span>
-                    <span class="font-black text-blue-700">LKR ${sub.toFixed(2)}</span>
+                total += sub; qTotal += item.qty;
+                html += `
+                <div class="flex justify-between items-center bg-white p-5 rounded-3xl border border-slate-50 shadow-sm">
+                    <div>
+                        <p class="font-black text-slate-800 text-sm uppercase leading-none">${item.name}</p>
+                        <p class="text-[10px] text-blue-500 font-bold mt-2">LKR ${item.price.toFixed(2)} /unit</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center bg-slate-50 rounded-xl border border-slate-100">
+                            <button onclick="updateQty(${i},-1)" class="px-3 py-1 font-black text-slate-400 hover:text-red-500">-</button>
+                            <span class="text-xs font-black w-6 text-center text-slate-800">${item.qty}</span>
+                            <button onclick="updateQty(${i},1)" class="px-3 py-1 font-black text-slate-400 hover:text-green-500">+</button>
+                        </div>
+                        <p class="text-sm font-black w-20 text-right text-slate-800">${sub.toFixed(2)}</p>
+                    </div>
                 </div>`;
-                rHtml += `<div class="flex justify-between"><span>${item.name} x${item.qty}</span><span class="font-bold">${sub.toFixed(2)}</span></div>`;
+                rHtml += `<div class="flex justify-between"><span>${item.name} x${item.qty}</span><span class="font-black">${sub.toFixed(2)}</span></div>`;
             });
 
-            list.innerHTML = html || '<p class="text-center text-slate-300 py-10 italic">Your cart is empty</p>';
+            list.innerHTML = html;
             document.getElementById('tAmount').innerText = total.toFixed(2);
+            document.getElementById('iCount').innerText = `${qTotal} Items`;
             document.getElementById('rItems').innerHTML = rHtml;
             document.getElementById('rTotal').innerText = total.toFixed(2);
+            document.getElementById('rDNote').classList.toggle('hidden', !isD);
             document.getElementById('rDate').innerText = new Date().toLocaleString();
         }
 
         function processSale() {
             if(cart.length === 0) return;
-            sales.unshift({ time: new Date().toLocaleString(), total: document.getElementById('tAmount').innerText, items: cart.map(i => i.name).join(', ') });
-            localStorage.setItem('supreme_sales_v3', JSON.stringify(sales));
+            const sale = {
+                time: new Date().toLocaleString(),
+                items: cart.map(i => `${i.name}(x${i.qty})`).join(', '),
+                delivery: document.getElementById('dCheck').checked ? 'YES' : 'NO',
+                total: document.getElementById('tAmount').innerText
+            };
+            salesHistory.unshift(sale);
+            localStorage.setItem('supreme_sales_v2', JSON.stringify(salesHistory));
             window.print();
-            cart = []; updateUI();
+            cart = []; document.getElementById('dCheck').checked = false; updateUI();
         }
 
-        function renderSales() {
-            document.getElementById('salesLog').innerHTML = sales.map(s => `
-                <div class="flex justify-between items-center border-b border-slate-50 py-3">
-                    <span class="text-[10px] text-slate-400 font-bold">${s.time}</span>
-                    <span class="text-xs font-bold text-slate-700 truncate max-w-[150px]">${s.items}</span>
-                    <span class="font-black text-blue-600 text-sm">LKR ${s.total}</span>
-                </div>
-            `).join('') || '<p class="text-slate-300 italic text-center">No sales recorded yet</p>';
+        function renderSalesLog() {
+            const body = document.getElementById('salesLogBody');
+            body.innerHTML = salesHistory.map(s => `
+                <tr class="border-b border-slate-50 hover:bg-slate-50 transition-colors">
+                    <td class="py-6 text-slate-400 font-medium">${s.time}</td>
+                    <td class="py-6 font-bold text-slate-900">${s.items}</td>
+                    <td class="py-6"><span class="${s.delivery === 'YES' ? 'bg-orange-50 text-orange-600' : 'bg-green-50 text-green-600'} px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">${s.delivery}</span></td>
+                    <td class="py-6 text-right font-black text-blue-600 text-base">${s.total}</td>
+                </tr>
+            `).join('');
         }
 
-        setInterval(() => { document.getElementById('live-time').innerText = new Date().toLocaleTimeString(); }, 1000);
+        function clearHistory() {
+            if(confirm("Delete all history?")) { salesHistory = []; localStorage.removeItem('supreme_sales_v2'); renderSalesLog(); }
+        }
+
+        setInterval(() => { document.getElementById('live-clock').innerText = new Date().toLocaleString(); }, 1000);
     </script>
 </body>
 </html>
