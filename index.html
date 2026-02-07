@@ -3,185 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supreme Blue - Healthy Hydration</title>
+    <title>Supreme Blue | Premium Hydration</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap');
-        body { font-family: 'Outfit', sans-serif; overflow-x: hidden; }
-        .hero-bg { background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%); }
-        .product-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .product-card:hover { transform: translateY(-10px); }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f0f9ff; overflow-x: hidden; margin: 0; }
         
-        /* Logo Sizes */
-        .nav-logo { height: 50px; width: auto; }
-        .hero-logo { height: 180px; width: auto; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1)); }
-        
+        /* --- WATER WAVE ANIMATION --- */
+        .ocean { 
+            height: 100%; width: 100%; position: absolute; top: 0; left: 0; background: #f0f9ff; z-index: -1; overflow: hidden;
+        }
+        .wave {
+            background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x; 
+            position: absolute; top: -150px; width: 6400px; height: 198px; animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite; transform: translate3d(0, 0, 0); opacity: 0.3;
+        }
+        .wave:nth-of-type(2) {
+            top: -120px; animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite; opacity: 0.5;
+        }
+        @keyframes wave {
+            0% { margin-left: 0; }
+            100% { margin-left: -1600px; }
+        }
+        @keyframes swell {
+            0%, 100% { transform: translate3d(0,-25px,0); }
+            50% { transform: translate3d(0,5px,0); }
+        }
+        /* ---------------------------- */
+
+        .glass-nav { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+        .product-card {
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .product-card:hover { transform: translateY(-12px); box-shadow: 0 30px 60px -15px rgba(0, 74, 173, 0.15); border-color: #3b82f6; }
+        .btn-premium { background: linear-gradient(135deg, #004aad 0%, #0066ff 100%); }
+        #cart-sidebar { transition: all 0.5s ease; box-shadow: -20px 0 50px rgba(0,0,0,0.05); }
         @media print { .no-print { display: none !important; } .print-only { display: block !important; } }
-        .print-only { display: none; }
-        
-        /* Floating Cart Styles */
-        #cart-sidebar { transition: transform 0.3s ease; transform: translateX(100%); }
-        #cart-sidebar.open { transform: translateX(0); }
     </style>
 </head>
-<body class="bg-white text-slate-900">
+<body>
 
-    <nav class="no-print flex items-center justify-between px-6 md:px-12 py-5 sticky top-0 bg-white/80 backdrop-blur-lg z-40 border-b border-slate-50">
+    <div class="ocean no-print">
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <nav class="no-print glass-nav fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center">
         <div class="flex items-center gap-4">
-            <img src="logo.jpeg" alt="Logo" class="nav-logo">
-            <div class="hidden sm:block border-l pl-4 border-slate-200">
-                <h1 class="text-xl font-black text-[#004aad] tracking-tighter uppercase italic">Supreme Blue</h1>
-            </div>
+            <img src="logo.jpeg" class="h-10 w-auto rounded-lg" alt="Logo">
+            <span class="font-extrabold text-lg tracking-tighter text-[#004aad] italic uppercase">Supreme Blue</span>
         </div>
-        
-        <div class="flex gap-4">
-            <button onclick="toggleCart()" class="relative bg-blue-50 p-3 rounded-full hover:bg-blue-100 transition-colors">
-                <span>🛒</span>
-                <span id="cart-count" class="absolute -top-1 -right-1 bg-blue-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
-            </button>
-        </div>
+        <button onclick="toggleCart()" class="relative p-3 bg-white/50 rounded-2xl shadow-sm border border-white transition-all hover:bg-blue-50">
+            <span class="text-xl">🛒</span>
+            <span id="cart-count" class="absolute -top-1 -right-1 bg-blue-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+        </button>
     </nav>
 
-    <header class="no-print hero-bg pt-16 pb-24 px-6 text-center">
-        <div class="max-w-4xl mx-auto flex flex-col items-center">
-            <img src="logo.jpeg" alt="Main Logo" class="hero-logo mb-8">
-            <p class="text-blue-500 font-black text-xs uppercase tracking-[0.6em] mb-4">Vihara Natural Products</p>
-            <h2 class="text-6xl md:text-8xl font-black text-slate-900 mb-6 leading-none uppercase italic">
-                Live <span class="text-blue-600">More</span>
-            </h2>
-            <p class="text-xl md:text-2xl text-slate-400 font-medium italic max-w-2xl">
-                Experience the purity of nature with our premium bottled drinking water.
-            </p>
-        </div>
+    <header class="no-print pt-32 pb-20 px-6 text-center">
+        <img src="logo.jpeg" class="h-40 w-auto mx-auto mb-8 drop-shadow-2xl rounded-3xl" alt="Supreme Blue">
+        <h1 class="text-6xl md:text-8xl font-[900] text-slate-900 leading-none mb-4">
+            LIVE <span class="text-blue-600">MORE.</span>
+        </h1>
+        <p class="text-slate-500 font-medium italic">Freshness delivered from Vihara Natural Products</p>
     </header>
 
-    <main class="no-print container mx-auto px-6 pb-32">
-        <div class="flex items-center justify-between mb-12">
-            <h3 class="text-2xl font-black text-slate-800 uppercase italic tracking-tighter">Our Products</h3>
-            <div class="h-1 flex-1 bg-slate-50 ml-6 rounded-full"></div>
+    <section class="no-print container mx-auto px-6 pb-40 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <div class="product-card p-8 rounded-[2.5rem] text-center">
+                <img src="https://www.pngplay.com/wp-content/uploads/12/Plastic-Water-Bottle-Transparent-Background.png" class="h-56 mx-auto mb-6 hover:scale-110 transition-transform duration-500" alt="500ml">
+                <h3 class="font-bold text-slate-800 uppercase text-sm tracking-widest">Compact 500ml</h3>
+                <p class="text-2xl font-black text-blue-600 my-4">Rs.50</p>
+                <button onclick="addToCart('500ml Bottle', 50)" class="btn-premium w-full text-white py-3 rounded-xl font-bold text-xs uppercase tracking-widest">Add to Bill</button>
+            </div>
+
+            <div class="product-card p-8 rounded-[2.5rem] text-center">
+                <img src="https://www.pngplay.com/wp-content/uploads/12/Water-Bottle-Transparent-Image.png" class="h-56 mx-auto mb-6 hover:scale-110 transition-transform duration-500" alt="1L">
+                <h3 class="font-bold text-slate-800 uppercase text-sm tracking-widest">Standard 1L</h3>
+                <p class="text-2xl font-black text-blue-600 my-4">Rs.90</p>
+                <button onclick="addToCart('1000ml Bottle', 90)" class="btn-premium w-full text-white py-3 rounded-xl font-bold text-xs uppercase tracking-widest">Add to Bill</button>
+            </div>
+
+            <div class="product-card p-8 rounded-[2.5rem] text-center">
+                <img src="https://static.vecteezy.com/system/resources/previews/008/505/482/original/water-bottle-isolated-on-transparent-background-free-png.png" class="h-56 mx-auto mb-6 hover:scale-110 transition-transform duration-500" alt="1.5L">
+                <h3 class="font-bold text-slate-800 uppercase text-sm tracking-widest">Family 1.5L</h3>
+                <p class="text-2xl font-black text-blue-600 my-4">Rs.120</p>
+                <button onclick="addToCart('1500ml Bottle', 120)" class="btn-premium w-full text-white py-3 rounded-xl font-bold text-xs uppercase tracking-widest">Add to Bill</button>
+            </div>
+
+            <div class="product-card p-8 rounded-[2.5rem] bg-[#004aad] border-none text-center">
+                <img src="https://www.pngplay.com/wp-content/uploads/12/Water-Bottle-PNG-Free-File-Download.png" class="h-56 mx-auto mb-6 brightness-110" alt="19L">
+                <h3 class="font-bold text-white uppercase text-sm tracking-widest">Bulk 19L</h3>
+                <p class="text-blue-100 text-xs mb-4">Custom Pricing</p>
+                <button onclick="addManualPrice('19L Large')" class="w-full bg-white text-[#004aad] py-3 rounded-xl font-bold text-xs uppercase tracking-widest">Set Price</button>
+            </div>
+
         </div>
+    </section>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="product-card bg-white p-8 rounded-[3rem] shadow-xl shadow-slate-100 border border-slate-50 text-center relative overflow-hidden group">
-                <div class="absolute top-0 right-0 p-6 opacity-10 text-6xl group-hover:scale-110 transition-transform">💧</div>
-                <span class="text-5xl block mb-6">💧</span>
-                <h4 class="font-black text-slate-800 text-lg uppercase mb-2">500ml Bottle</h4>
-                <p class="text-blue-600 font-black text-2xl mb-6">LKR 50.00</p>
-                <button onclick="addToCart('500ml Bottle', 50)" class="w-full py-3 bg-[#004aad] text-white rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-blue-800 transition-colors">Add to Bill</button>
-            </div>
-
-            <div class="product-card bg-white p-8 rounded-[3rem] shadow-xl shadow-slate-100 border border-slate-50 text-center relative overflow-hidden group">
-                <div class="absolute top-0 right-0 p-6 opacity-10 text-6xl group-hover:scale-110 transition-transform">🍶</div>
-                <span class="text-5xl block mb-6">🍶</span>
-                <h4 class="font-black text-slate-800 text-lg uppercase mb-2">1000ml Bottle</h4>
-                <p class="text-blue-600 font-black text-2xl mb-6">LKR 90.00</p>
-                <button onclick="addToCart('1000ml Bottle', 90)" class="w-full py-3 bg-[#004aad] text-white rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-blue-800 transition-colors">Add to Bill</button>
-            </div>
-
-            <div class="product-card bg-white p-8 rounded-[3rem] shadow-xl shadow-slate-100 border border-slate-50 text-center relative overflow-hidden group">
-                <div class="absolute top-0 right-0 p-6 opacity-10 text-6xl group-hover:scale-110 transition-transform">🥤</div>
-                <span class="text-5xl block mb-6">🥤</span>
-                <h4 class="font-black text-slate-800 text-lg uppercase mb-2">1500ml Bottle</h4>
-                <p class="text-blue-600 font-black text-2xl mb-6">LKR 120.00</p>
-                <button onclick="addToCart('1500ml Bottle', 120)" class="w-full py-3 bg-[#004aad] text-white rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-blue-800 transition-colors">Add to Bill</button>
-            </div>
-
-            <div class="product-card bg-blue-600 p-8 rounded-[3rem] shadow-2xl shadow-blue-200 text-center relative overflow-hidden group">
-                <div class="absolute top-0 right-0 p-6 opacity-20 text-6xl group-hover:scale-110 transition-transform text-white">🛢️</div>
-                <span class="text-5xl block mb-6">🛢️</span>
-                <h4 class="font-black text-white text-lg uppercase mb-2">19L Large</h4>
-                <p class="text-blue-100 font-bold text-sm mb-6 uppercase tracking-widest">Custom Pricing</p>
-                <button onclick="addManualPrice('19L Large')" class="w-full py-3 bg-white text-[#004aad] rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-blue-50 transition-colors">Set Price</button>
-            </div>
+    <div id="cart-sidebar" class="no-print fixed top-0 right-0 h-full w-full max-w-sm bg-white/95 backdrop-blur-md z-[60] translate-x-full flex flex-col border-l border-white/20">
+        <div class="p-6 border-b flex justify-between items-center">
+            <h2 class="font-black text-slate-900 italic">CURRENT BILL</h2>
+            <button onclick="toggleCart()" class="text-2xl">✕</button>
         </div>
-    </main>
-
-    <div id="cart-sidebar" class="no-print fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 flex flex-col border-l border-slate-100">
-        <div class="p-8 bg-[#0f172a] text-white flex justify-between items-center">
-            <h2 class="font-black text-lg uppercase italic">Bill Summary</h2>
-            <button onclick="toggleCart()" class="text-white text-2xl">✕</button>
-        </div>
-        <div id="cItems" class="flex-1 p-8 overflow-y-auto space-y-4">
-            <p class="text-center text-slate-300 py-20 italic">No items added to bill yet.</p>
-        </div>
-        <div class="p-8 bg-slate-50 border-t border-slate-100">
-            <div class="flex justify-between items-center mb-8">
-                <span class="font-bold text-slate-400 uppercase text-xs">Grand Total</span>
-                <span id="tAmount" class="text-4xl font-black text-[#004aad]">0.00</span>
+        <div id="cItems" class="flex-1 p-6 overflow-y-auto space-y-4"></div>
+        <div class="p-6 bg-blue-50">
+            <div class="flex justify-between mb-6">
+                <span class="font-bold text-slate-400 uppercase text-[10px]">Grand Total</span>
+                <span id="tAmount" class="text-3xl font-black text-[#004aad]">0.00</span>
             </div>
-            <button onclick="processSale()" class="w-full py-5 bg-[#004aad] text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-blue-800 transition-all">Print & Finalize</button>
+            <button onclick="processSale()" class="btn-premium w-full py-4 text-white rounded-2xl font-black text-xs uppercase tracking-widest">Print Receipt</button>
         </div>
     </div>
 
-    <div class="print-only p-12 font-mono text-[12px]">
+    <div class="print-only p-10 font-mono text-[12px]">
         <center>
-            <img src="logo.jpeg" class="h-20 mb-4">
-            <h1 class="text-3xl font-black">SUPREME BLUE</h1>
-            <p class="font-bold uppercase tracking-widest">Vihara Natural Products</p>
-            <div class="my-6 border-y border-black py-4">
-                <p>Viharahena Estate, Karandana.</p>
-                <p>Tel: 071-4491618</p>
+            <h1 class="text-2xl font-bold">SUPREME BLUE</h1>
+            <p>VIHARA NATURAL PRODUCTS</p>
+            <p>Tel: 071-4491618</p>
+            <hr class="my-4 border-black border-dashed">
+            <div id="rItems" class="text-left"></div>
+            <hr class="my-4 border-black border-dashed">
+            <div class="flex justify-between font-bold text-lg">
+                <span>TOTAL</span><span id="rTotal"></span>
             </div>
+            <p class="mt-8 italic">"Live More with Healthy Hydration"</p>
         </center>
-        <div id="rItems" class="space-y-2 mb-8 text-sm"></div>
-        <div class="border-t-2 border-black pt-4 flex justify-between text-2xl font-black">
-            <span>TOTAL:</span><span id="rTotal"></span>
-        </div>
-        <center class="mt-16 italic font-bold">"Live More with Healthy Hydration"</center>
     </div>
 
     <script>
         let cart = [];
-        
-        function toggleCart() {
-            document.getElementById('cart-sidebar').classList.toggle('open');
-        }
-
+        function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('translate-x-full'); }
         function addToCart(name, price) {
             const item = cart.find(i => i.name === name);
             if (item) item.qty++; else cart.push({ name, price: parseFloat(price), qty: 1 });
             updateUI();
-            if(!document.getElementById('cart-sidebar').classList.contains('open')) toggleCart();
+            if(document.getElementById('cart-sidebar').classList.contains('translate-x-full')) toggleCart();
         }
-
         function addManualPrice(name) {
-            let p = prompt(`Enter custom price for ${name}:`);
+            let p = prompt(`Price for ${name}:`);
             if (p > 0) addToCart(name, p);
         }
-
         function updateUI() {
             const list = document.getElementById('cItems');
             let total = 0, html = '', rHtml = '';
-            
             cart.forEach(item => {
                 const sub = item.price * item.qty;
                 total += sub;
-                html += `
-                    <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-50">
-                        <div>
-                            <p class="font-black text-xs uppercase text-slate-700">${item.name}</p>
-                            <p class="text-[10px] text-slate-400 font-bold">LKR ${item.price.toFixed(2)} x ${item.qty}</p>
-                        </div>
-                        <span class="font-black text-blue-600">LKR ${sub.toFixed(2)}</span>
-                    </div>`;
+                html += `<div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-50 flex justify-between"><div><p class="font-bold text-xs uppercase">${item.name}</p><p class="text-[10px] text-slate-400">Rs.${item.price} x ${item.qty}</p></div><span class="font-bold text-blue-600">Rs.${sub}</span></div>`;
                 rHtml += `<div class="flex justify-between"><span>${item.name} x${item.qty}</span><span>${sub.toFixed(2)}</span></div>`;
             });
-
-            list.innerHTML = html || '<p class="text-center text-slate-300 py-20 italic">No items added to bill yet.</p>';
+            list.innerHTML = html || '<p class="text-center text-slate-300 py-10">Empty Bill</p>';
             document.getElementById('tAmount').innerText = total.toFixed(2);
-            document.getElementById('cart-count').innerText = cart.reduce((a, b) => a + b.qty, 0);
+            document.getElementById('cart-count').innerText = cart.length;
             document.getElementById('rItems').innerHTML = rHtml;
             document.getElementById('rTotal').innerText = total.toFixed(2);
         }
-
-        function processSale() {
-            if(cart.length > 0) {
-                window.print();
-                cart = [];
-                updateUI();
-                toggleCart();
-            }
-        }
+        function processSale() { if(cart.length > 0) { window.print(); cart = []; updateUI(); toggleCart(); } }
     </script>
 </body>
 </html>
